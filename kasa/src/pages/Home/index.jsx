@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import homeimg from '../../assets/homeimg.jpg'
-import Card from '../../components/Card'
+import Thumb from '../../components/Thumb'
 import dataList from '../../datas/data'
 
 const HomeWrapper = styled.div`
@@ -30,11 +30,12 @@ const HomeBannerTitle = styled.div`
   font-size: 2.5rem;
 `
 
-const KasaList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  
-  padding: 45px;
+const ThumbList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  grid-auto-rows: minmax(100px, auto);
+  padding: 56px;
   border-radius: 25px;
   background-color: ${colors.secondary}
 `
@@ -46,15 +47,15 @@ function Home() {
         <HomeBannerImg src={homeimg} alt="bannière"/>
         <HomeBannerTitle>Chez vous, partout et ailleurs</HomeBannerTitle>
       </HomeBanner>
-      <KasaList>
+      <ThumbList>
         {dataList.map((kasa) => (
-          <Card 
+          <Thumb 
             key={`${kasa.id}`}
             cover={kasa.cover}
             title={kasa.title}
           />
         ))}
-      </KasaList>
+      </ThumbList>
     </HomeWrapper>
   )
 }

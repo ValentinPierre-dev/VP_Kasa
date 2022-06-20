@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 
-const CardCover = styled.img`
+const ThumbCover = styled.img`
   color: #5843e4;
   font-size: 22px;
   font-weight: normal;
@@ -12,7 +12,7 @@ const CardCover = styled.img`
   height: 300px;
 `
 
-const CardTitle = styled.span`
+const ThumbTitle = styled.span`
 position: absolute;
 top: 240px;
 left: 20px;
@@ -21,7 +21,7 @@ left: 20px;
   font-weight: normal;
 `
 
-const CardWrapper = styled.div`
+const ThumbWrapper = styled.div`
 position: relative;
   flex-direction: column;
   justify-content: space-around;
@@ -34,23 +34,24 @@ position: relative;
   }
 `
 
-function Card({ cover, title }) {
+
+function Thumb({ cover, title }) {
   return (
-    <CardWrapper>
-      <CardCover src={cover} />
-      <CardTitle>{title}</CardTitle>
-    </CardWrapper>
+    <ThumbWrapper>
+      <ThumbCover src={cover} />
+      <ThumbTitle>{title}</ThumbTitle>
+    </ThumbWrapper>
   )
 }
 
-Card.propTypes = {
+Thumb.propTypes = {
   cover: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 }
 
-Card.defaultProps = {
+Thumb.defaultProps = {
   cover: '',
   title: '',
 }
 
-export default Card
+export default Thumb
