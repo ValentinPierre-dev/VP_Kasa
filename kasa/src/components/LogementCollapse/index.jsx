@@ -49,7 +49,6 @@ function LogementCollapse({ title, content }) {
 
 LogementCollapse.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
 }
 
 LogementCollapse.defaultProps = {

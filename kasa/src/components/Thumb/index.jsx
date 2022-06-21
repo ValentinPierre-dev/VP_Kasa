@@ -8,8 +8,8 @@ const ThumbCover = styled.img`
   font-weight: normal;
   object-fit: cover;
   border-radius: 10px;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 `
 const ThumbFilter = styled.div`
   border-radius: 10px;
@@ -21,7 +21,7 @@ const ThumbFilter = styled.div`
 
 const ThumbTitle = styled.span`
 position: absolute;
-top: 240px;
+top: 330px;
 left: 20px;
   color: ${colors.white};
   font-size: 18px;
@@ -32,8 +32,8 @@ const ThumbWrapper = styled.div`
 position: relative;
   flex-direction: column;
   justify-content: space-around;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   transition: 200ms;
   &:hover {
     cursor: pointer;

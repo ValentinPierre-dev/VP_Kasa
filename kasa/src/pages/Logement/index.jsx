@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import Tag from "../../components/Tag";
 import LogementCollapse from "../../components/LogementCollapse";
+import Caroussel from "../../components/Caroussel";
+import Rating from "../../components/Rating";
 
 const MainInfosWrapper = styled.div`
     display: flex;
@@ -59,10 +61,27 @@ const CollapseWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 20px 0 50px 0;
 `
 
-const CollapseDesc = styled.div``
+const HostAndRate = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+const RatingWrapper = styled.div`
+    position: relative;
+`
+
+const NotActiveStars = styled.div`
+    position: absolute;
+    inset: 0;
+`
+
+const ActiveStars = styled.div`
+    position: absolute;
+    inset: 0;
+`
 
 function Logement() {
 
@@ -94,28 +113,47 @@ function Logement() {
 
     return isDataLoading ? <Loader /> : (
         <LogementWrapper>
+
+            <Caroussel image={logementDetails.pictures[0]} />
+
             <MainInfosWrapper>
+
                 <TitleWrapper>
                     <TitleStyle>{logementDetails.title}</TitleStyle>
                     <SubTitleStyle>{logementDetails.location}</SubTitleStyle>
+                    <TagList>
+                        {logementDetails.tags.map((tag, index) => (
+                            <Tag 
+                                key={`${tag}-${index}`}
+                                tag={tag} 
+                            />
+                        ))}
+                    </TagList>
                 </TitleWrapper>
-                <ProfilWrapper>
-                <HostName>{logementDetails.host.name}</HostName>
-                    <HostPhoto src={logementDetails.host.picture} />
-                </ProfilWrapper>
+
+                <HostAndRate>
+                    <ProfilWrapper>
+                        <HostName>{logementDetails.host.name}</HostName>
+                        <HostPhoto src={logementDetails.host.picture} />
+                    </ProfilWrapper>
+
+                    <RatingWrapper>
+                        <NotActiveStars>
+                            <Rating ratingType='NotActive' scaleValue={5} />
+                        </NotActiveStars>
+                        <ActiveStars>
+                            <Rating ratingType='Active' scaleValue={logementDetails.rating} />
+                        </ActiveStars>
+                    </RatingWrapper>
+                </HostAndRate>
+
             </MainInfosWrapper>
-            <TagList>
-                {logementDetails.tags.map((tag, index) => (
-                    <Tag 
-                        key={`${tag}-${index}`}
-                        tag={tag} 
-                    />
-                ))}
-            </TagList>
+
             <CollapseWrapper>
                 <LogementCollapse title={'Description'} content={logementDetails.description} />
                 <LogementCollapse title={'Équipements'} content={logementDetails.equipments} />
             </CollapseWrapper>
+
         </LogementWrapper>
     )
 }
