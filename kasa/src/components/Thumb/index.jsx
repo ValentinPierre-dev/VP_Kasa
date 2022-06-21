@@ -11,6 +11,13 @@ const ThumbCover = styled.img`
   width: 300px;
   height: 300px;
 `
+const ThumbFilter = styled.div`
+  border-radius: 10px;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 58%);
+`
+
 
 const ThumbTitle = styled.span`
 position: absolute;
@@ -39,6 +46,7 @@ function Thumb({ cover, title }) {
   return (
     <ThumbWrapper>
       <ThumbCover src={cover} />
+      <ThumbFilter></ThumbFilter>
       <ThumbTitle>{title}</ThumbTitle>
     </ThumbWrapper>
   )

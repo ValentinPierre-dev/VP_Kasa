@@ -1,8 +1,11 @@
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import homeimg from '../../assets/homeimg.jpg'
 import Thumb from '../../components/Thumb'
-import dataList from '../../datas/data'
+//import dataList from '../../datas/data'
+import { Loader } from '../../utils/style/Atoms'
 
 const HomeWrapper = styled.div`
   width: 80%;
@@ -41,21 +44,52 @@ const ThumbList = styled.div`
 `
 
 function Home() {
+
+  const [isDataLoading, setDataLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [logementsList, setLogementsList] = useState([])
+
+  useEffect(() => {
+    async function fetchLogements() {
+      setDataLoading(true)
+      try {
+        const response = await fetch(`http://localhost:3000/datas/data.json`)
+        const logementsList = await response.json()
+        setLogementsList(logementsList)
+      } catch (err) {
+        console.log('===== error =====', err)
+        setError(true)
+      } finally {
+        setDataLoading(false)
+      }
+    }
+    fetchLogements()
+  }, [])
+
+  if (error) {
+    return <span>Oups il y a eu un problème</span>
+  }
+
   return ( 
     <HomeWrapper>
       <HomeBanner>
         <HomeBannerImg src={homeimg} alt="bannière"/>
         <HomeBannerTitle>Chez vous, partout et ailleurs</HomeBannerTitle>
       </HomeBanner>
-      <ThumbList>
-        {dataList.map((kasa) => (
-          <Thumb 
-            key={`${kasa.id}`}
-            cover={kasa.cover}
-            title={kasa.title}
-          />
-        ))}
-      </ThumbList>
+      {isDataLoading ? (
+        <Loader />
+      ) : (
+        <ThumbList>
+          {logementsList.map((logement) => (
+            <Link key={`${logement.id}`} to={`/logement/${logement.id}`}>
+              <Thumb 
+                cover={logement.cover}
+                title={logement.title}
+              />
+            </Link>
+          ))}
+        </ThumbList>
+      )}
     </HomeWrapper>
   )
 }

@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import { createGlobalStyle } from 'styled-components'
 import Home from './pages/Home'
-import Apropos from './pages/Apropos';
+import Logement from './pages/Logement'
+import About from './pages/About'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Error from './components/Error'
@@ -32,7 +33,10 @@ root.render(
     <Header />
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route exact path="/apropos" element={<Apropos />} />
+      <Route path="/logement" element={<Logement />}>
+        <Route path=":logementId" element={<Logement />} />
+      </Route>
+      <Route exact path="/about" element={<About />} />
       <Route path="*" element={<Error />} />
     </Routes>
     <Footer />

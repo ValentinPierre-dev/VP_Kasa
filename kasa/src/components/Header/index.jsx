@@ -24,7 +24,7 @@ function Header() {
       </Link>
       <div>
         <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/apropos">À Propos</StyledLink>
+        <StyledLink to="/about">À Propos</StyledLink>
       </div>
     </NavContainer>
   )
