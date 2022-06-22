@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-import { StyledLink } from '../../utils/style/Atoms'
+import styled from "styled-components";
+import colors from "../../utils/style/colors";
+import { StyledLink } from "../../utils/style/Atoms";
 
 const ErrorWrapper = styled.div`
   display: flex;
@@ -8,20 +8,20 @@ const ErrorWrapper = styled.div`
   color: ${colors.primary};
   background-color: ${colors.background};
   align-items: center;
-`
+`;
 
 const ErrorTitle = styled.h1`
   font-weight: bold;
   font-size: 12rem;
-`
+`;
 
 const ErrorSubtitle = styled.h2`
   font-weight: semi-bold;
   margin-bottom: 6rem;
-`
+`;
 const ErrorLink = styled.div`
   margin-bottom: 6rem;
-`
+`;
 
 function Error() {
   return (
@@ -34,7 +34,7 @@ function Error() {
         <StyledLink to="/">Retourner sur la page d'accueil</StyledLink>
       </ErrorLink>
     </ErrorWrapper>
-  )
+  );
 }
 
-export default Error
+export default Error;

@@ -1,29 +1,29 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
-import homeimg from '../../assets/homeimg.jpg'
-import Thumb from '../../components/Thumb'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import colors from "../../utils/style/colors";
+import homeimg from "../../assets/homeimg.jpg";
+import Thumb from "../../components/Thumb";
 //import dataList from '../../datas/data'
-import { Loader } from '../../utils/style/Atoms'
+import { Loader } from "../../utils/style/Atoms";
 
 const HomeWrapper = styled.div`
   width: 80%;
   margin: 20px auto;
-`
+`;
 
 const HomeBanner = styled.div`
-position: relative;
-text-align: center;
-color: white;
-`
+  position: relative;
+  text-align: center;
+  color: white;
+`;
 
 const HomeBannerImg = styled.img`
   width: 100%;
   margin: 20px auto;
   border-radius: 25px;
   filter: brightness(80%);
-`
+`;
 
 const HomeBannerTitle = styled.div`
   position: absolute;
@@ -31,7 +31,7 @@ const HomeBannerTitle = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2.5rem;
-`
+`;
 
 const ThumbList = styled.div`
   display: grid;
@@ -40,40 +40,39 @@ const ThumbList = styled.div`
   grid-auto-rows: minmax(100px, auto);
   padding: 56px;
   border-radius: 25px;
-  background-color: ${colors.secondary}
-`
+  background-color: ${colors.secondary};
+`;
 
 function Home() {
-
-  const [isDataLoading, setDataLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const [logementsList, setLogementsList] = useState([])
+  const [isDataLoading, setDataLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [logementsList, setLogementsList] = useState([]);
 
   useEffect(() => {
     async function fetchLogements() {
-      setDataLoading(true)
+      setDataLoading(true);
       try {
-        const response = await fetch(`http://localhost:3000/datas/data.json`)
-        const logementsList = await response.json()
-        setLogementsList(logementsList)
+        const response = await fetch(`http://localhost:3000/datas/data.json`);
+        const logementsList = await response.json();
+        setLogementsList(logementsList);
       } catch (err) {
-        console.log('===== error =====', err)
-        setError(true)
+        console.log("===== error =====", err);
+        setError(true);
       } finally {
-        setDataLoading(false)
+        setDataLoading(false);
       }
     }
-    fetchLogements()
-  }, [])
+    fetchLogements();
+  }, []);
 
   if (error) {
-    return <span>Oups il y a eu un problème</span>
+    return <span>Oups il y a eu un problème</span>;
   }
 
-  return ( 
+  return (
     <HomeWrapper>
       <HomeBanner>
-        <HomeBannerImg src={homeimg} alt="bannière"/>
+        <HomeBannerImg src={homeimg} alt="bannière" />
         <HomeBannerTitle>Chez vous, partout et ailleurs</HomeBannerTitle>
       </HomeBanner>
       {isDataLoading ? (
@@ -82,16 +81,13 @@ function Home() {
         <ThumbList>
           {logementsList.map((logement) => (
             <Link key={`${logement.id}`} to={`/logement/${logement.id}`}>
-              <Thumb 
-                cover={logement.cover}
-                title={logement.title}
-              />
+              <Thumb cover={logement.cover} title={logement.title} />
             </Link>
           ))}
         </ThumbList>
       )}
     </HomeWrapper>
-  )
+  );
 }
 
-export default Home
+export default Home;

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import colors from "../../utils/style/colors";
 
 const ThumbCover = styled.img`
   color: #5843e4;
@@ -10,26 +10,29 @@ const ThumbCover = styled.img`
   border-radius: 10px;
   width: 400px;
   height: 400px;
-`
+`;
 const ThumbFilter = styled.div`
   border-radius: 10px;
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 58%);
-`
-
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 58%
+  );
+`;
 
 const ThumbTitle = styled.span`
-position: absolute;
-top: 330px;
-left: 20px;
+  position: absolute;
+  top: 330px;
+  left: 20px;
   color: ${colors.white};
   font-size: 18px;
   font-weight: normal;
-`
+`;
 
 const ThumbWrapper = styled.div`
-position: relative;
+  position: relative;
   flex-direction: column;
   justify-content: space-around;
   width: 400px;
@@ -39,8 +42,7 @@ position: relative;
     cursor: pointer;
     box-shadow: 2px 2px 10px #e2e3e9;
   }
-`
-
+`;
 
 function Thumb({ cover, title }) {
   return (
@@ -49,17 +51,17 @@ function Thumb({ cover, title }) {
       <ThumbFilter></ThumbFilter>
       <ThumbTitle>{title}</ThumbTitle>
     </ThumbWrapper>
-  )
+  );
 }
 
 Thumb.propTypes = {
   cover: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-}
+};
 
 Thumb.defaultProps = {
-  cover: '',
-  title: '',
-}
+  cover: "",
+  title: "",
+};
 
-export default Thumb
+export default Thumb;
