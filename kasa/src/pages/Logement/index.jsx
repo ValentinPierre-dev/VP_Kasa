@@ -4,7 +4,8 @@ import { Loader } from '../../utils/style/Atoms'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import Tag from "../../components/Tag";
-import LogementCollapse from "../../components/LogementCollapse";
+import DescriptionCollapse from "../../components/DescriptionCollapse";
+import StuffCollapse from "../../components/StuffCollapse";
 import Caroussel from "../../components/Caroussel";
 import Rating from "../../components/Rating";
 
@@ -150,8 +151,8 @@ function Logement() {
             </MainInfosWrapper>
 
             <CollapseWrapper>
-                <LogementCollapse title={'Description'} content={logementDetails.description} />
-                <LogementCollapse title={'Équipements'} content={logementDetails.equipments} />
+                <DescriptionCollapse title={'Description'} content={logementDetails.description} />
+                <StuffCollapse title={'Équipements'} contents={logementDetails.equipments} />
             </CollapseWrapper>
 
         </LogementWrapper>
