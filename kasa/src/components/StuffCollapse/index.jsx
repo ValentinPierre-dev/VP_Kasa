@@ -8,11 +8,17 @@ const CollapseWrapper = styled.div`
   width: 45%;
   border-radius: 5px;
   background-color: ${colors.secondary};
+  @media only screen and (max-width : 500px) {
+    width: 100%;
+  }
 `;
 
 const CollapseWrapperNotActive = styled.div`
   width: 45%;
   background-color: none;
+  @media only screen and (max-width : 500px) {
+    width: 100%;
+  }
 `;
 
 const CollapseSwitch = styled.div`
@@ -28,17 +34,20 @@ const CollapseTitle = styled.p`
   color: ${colors.white};
   font-size: 18px;
   font-weight: normal;
+  @media only screen and (max-width : 500px) {
+    font-size: 13px;
+  }
 `;
 
-const CollapseDesc = styled.ul`
+const CollapseDesc = styled.p`
   color: ${colors.primary};
   padding: 20px;
   font-size: 18px;
   font-weight: 400;
-`;
-
-const StuffList = styled.li`
-  list-style: none;
+  @media only screen and (max-width : 500px) {
+    font-size: 12px;
+    padding: 10px;
+  }
 `;
 
 const ButtonArrow = styled.button`
@@ -54,6 +63,16 @@ const ButtonArrowActive = styled.button`
   cursor: pointer;
 `;
 
+const Arrow = styled.img`
+  @media only screen and (max-width : 500px) {
+    height: 10px;
+  }
+`
+
+const StuffList = styled.li`
+  list-style: none;
+`;
+
 function StuffCollapse({ title, contents }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -62,12 +81,12 @@ function StuffCollapse({ title, contents }) {
       <CollapseSwitch>
         <CollapseTitle>{title}</CollapseTitle>
         <ButtonArrowActive onClick={() => setIsOpen(false)}>
-          <img src={arrow} alt="bouton flèche" />
+          <Arrow src={arrow} alt="bouton flèche" />
         </ButtonArrowActive>
       </CollapseSwitch>
       <CollapseDesc>
-        {contents.map((content) => (
-          <StuffList>{content}</StuffList>
+        {contents.map((content, index) => (
+          <StuffList key={index}>{content}</StuffList>
         ))}
       </CollapseDesc>
     </CollapseWrapper>
@@ -76,7 +95,7 @@ function StuffCollapse({ title, contents }) {
       <CollapseSwitch>
         <CollapseTitle>{title}</CollapseTitle>
         <ButtonArrow onClick={() => setIsOpen(true)}>
-          <img src={arrow} alt="bouton flèche" />
+          <Arrow src={arrow} alt="bouton flèche" />
         </ButtonArrow>
       </CollapseSwitch>
     </CollapseWrapperNotActive>

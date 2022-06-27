@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { Loader } from "../../utils/style/Atoms";
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
+import Slider from "../../components/Slider";
 import Tag from "../../components/Tag";
 import DescriptionCollapse from "../../components/DescriptionCollapse";
 import StuffCollapse from "../../components/StuffCollapse";
-import Caroussel from "../../components/Caroussel";
 import Rating from "../../components/Rating";
 
 const MainInfosWrapper = styled.div`
@@ -15,23 +15,36 @@ const MainInfosWrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   color: ${colors.primary};
+  @media only screen and (max-width : 500px) {
+    flex-direction: column;
+  }
 `;
 
 const LogementWrapper = styled.div`
   width: 80%;
   margin: auto;
+  @media only screen and (max-width : 500px) {
+    width: 90%;
+  }
 `;
 
-const TitleWrapper = styled.div``;
+const TitleWrapper = styled.div`
+`;
 
 const TitleStyle = styled.h1`
   font-weight: 500;
   font-size: 36px;
+  @media only screen and (max-width : 500px) {
+    font-size: 18px;
+  }
 `;
 
 const SubTitleStyle = styled.h2`
   font-weight: 500;
   font-size: 18px;
+  @media only screen and (max-width : 500px) {
+    font-size: 14px;
+  }
 `;
 
 const ProfilWrapper = styled.div`
@@ -45,16 +58,24 @@ const HostName = styled.p`
   font-weight: 500;
   font-size: 18px;
   text-align: right;
+  @media only screen and (max-width : 500px) {
+    font-size: 12px;
+    width: 80px;
+  }
 `;
 
 const HostPhoto = styled.img`
   margin-left: 10px;
   height: 64px;
   border-radius: 10rem;
+  @media only screen and (max-width : 500px) {
+    height: 32px;
+  }
 `;
 
 const TagList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin: 10px 0;
 `;
 
@@ -63,24 +84,40 @@ const CollapseWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 0 50px 0;
+  @media only screen and (max-width : 500px) {
+    flex-direction: column;
+  }
 `;
 
 const HostAndRate = styled.div`
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width : 500px) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+  }
 `;
 
 const RatingWrapper = styled.div`
   position: relative;
+  @media only screen and (max-width : 500px) {
+    width: 100%;
+    height: 18px;
+  }
 `;
 
 const NotActiveStars = styled.div`
   position: absolute;
+  top: 50%;
   inset: 0;
 `;
 
 const ActiveStars = styled.div`
   position: absolute;
+  top: 50%;
   inset: 0;
 `;
 
@@ -117,8 +154,7 @@ function Logement() {
     <Loader />
   ) : (
     <LogementWrapper>
-      <Caroussel image={logementDetails.pictures[0]} />
-
+      <Slider props={logementDetails.pictures} />
       <MainInfosWrapper>
         <TitleWrapper>
           <TitleStyle>{logementDetails.title}</TitleStyle>

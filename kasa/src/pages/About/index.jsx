@@ -6,6 +6,10 @@ import aboutData from "../../datas/aboutdata";
 const AboutWrapper = styled.div`
   width: 80%;
   margin: 20px auto;
+  @media only screen and (max-width : 500px) {
+    width: 90%;
+    margin: 0px auto;
+  }
 `;
 
 const AboutBanner = styled.div`
@@ -16,9 +20,13 @@ const AboutBanner = styled.div`
 
 const AboutBannerImg = styled.img`
   width: 100%;
-  margin: 20px auto;
   border-radius: 25px;
   filter: brightness(80%);
+  object-fit: cover;
+  @media only screen and (max-width : 500px) {
+    height: 223px;
+    border-radius: 10px;
+  }
 `;
 
 const CollapseList = styled.div``;

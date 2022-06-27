@@ -9,6 +9,10 @@ const CollapseWrapper = styled.div`
   margin: 30px auto;
   border-radius: 5px;
   background-color: ${colors.secondary};
+  @media only screen and (max-width : 500px) {
+    width: 100%;
+    margin: 15px auto;
+  }
 `;
 
 const CollapseSwitch = styled.div`
@@ -24,6 +28,9 @@ const CollapseTitle = styled.p`
   color: ${colors.white};
   font-size: 24px;
   font-weight: normal;
+  @media only screen and (max-width : 500px) {
+    font-size: 13px;
+  }
 `;
 
 const CollapseDesc = styled.p`
@@ -31,6 +38,10 @@ const CollapseDesc = styled.p`
   padding: 20px;
   font-size: 24px;
   font-weight: normal;
+  @media only screen and (max-width : 500px) {
+    font-size: 12px;
+    padding: 10px;
+  }
 `;
 
 const ButtonArrow = styled.button`
@@ -46,6 +57,12 @@ const ButtonArrowActive = styled.button`
   cursor: pointer;
 `;
 
+const Arrow = styled.img`
+  @media only screen and (max-width : 500px) {
+    height: 10px;
+  }
+`
+
 function Collapse({ title, desc }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,7 +71,7 @@ function Collapse({ title, desc }) {
       <CollapseSwitch>
         <CollapseTitle>{title}</CollapseTitle>
         <ButtonArrowActive onClick={() => setIsOpen(false)}>
-          <img src={arrow} alt="bouton flèche" />
+          <Arrow src={arrow} alt="bouton flèche" />
         </ButtonArrowActive>
       </CollapseSwitch>
       <CollapseDesc>{desc}</CollapseDesc>
@@ -64,7 +81,7 @@ function Collapse({ title, desc }) {
       <CollapseSwitch>
         <CollapseTitle>{title}</CollapseTitle>
         <ButtonArrow onClick={() => setIsOpen(true)}>
-          <img src={arrow} alt="bouton flèche" />
+          <Arrow src={arrow} alt="bouton flèche" />
         </ButtonArrow>
       </CollapseSwitch>
     </CollapseWrapper>

@@ -10,6 +10,10 @@ const ThumbCover = styled.img`
   border-radius: 10px;
   width: 400px;
   height: 400px;
+  @media only screen and (max-width : 500px) {
+    width: 100%;
+    height: 225px;
+  }
 `;
 const ThumbFilter = styled.div`
   border-radius: 10px;
@@ -29,6 +33,9 @@ const ThumbTitle = styled.span`
   color: ${colors.white};
   font-size: 18px;
   font-weight: normal;
+  @media only screen and (max-width : 500px) {
+    top: 180px;
+  }
 `;
 
 const ThumbWrapper = styled.div`
@@ -41,6 +48,10 @@ const ThumbWrapper = styled.div`
   &:hover {
     cursor: pointer;
     box-shadow: 2px 2px 10px #e2e3e9;
+  }
+  @media only screen and (max-width : 500px) {
+    width: 100%;
+    height: 225px;
   }
 `;
 

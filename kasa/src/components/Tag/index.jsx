@@ -8,10 +8,17 @@ const TagContainer = styled.div`
   padding: 0 30px;
   margin-right: 10px;
   border-radius: 15px;
+  @media only screen and (max-width : 500px) {
+    padding: 0 15px;
+    margin-bottom: 10px;
+  }
 `;
 const TagName = styled.p`
   padding: 3px;
   margin: 0;
+  @media only screen and (max-width : 500px) {
+    font-size: 10px;
+  }
 `;
 
 function Tag({ tag }) {
