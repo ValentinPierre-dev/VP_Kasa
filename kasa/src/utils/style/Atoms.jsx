@@ -33,9 +33,9 @@ export const StyledLink = styled(Link)`
     `color: white; 
     border-radius: 30px; 
     background-color: ${colors.primary};`}
-    @media only screen and (max-width : 500px) {
-      font-size: 12px;
-      padding: 10px 8px;
-      text-transform: uppercase;
-    }
+  @media only screen and (max-width : 500px) {
+    font-size: 12px;
+    padding: 10px 8px;
+    text-transform: uppercase;
+  }
 `;

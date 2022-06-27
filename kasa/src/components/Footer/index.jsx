@@ -17,10 +17,18 @@ const FooterLogo = styled.img`
   padding: 30px 0;
 `;
 
+const FooterSubtitle = styled.p`
+  font-size: 24px;
+  @media only screen and (max-width: 500px) {
+    font-size: 12px;
+  }
+`;
+
 function Footer() {
   return (
     <FooterContainer>
-      <FooterLogo src={logo_white} />© 2020 Kasa. All rights reserved
+      <FooterLogo src={logo_white} />
+      <FooterSubtitle>© 2020 Kasa. All rights reserved</FooterSubtitle>
     </FooterContainer>
   );
 }

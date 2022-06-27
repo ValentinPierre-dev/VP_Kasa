@@ -5,19 +5,21 @@ import colors from "../../utils/style/colors";
 import arrow from "../../assets/arrow.svg";
 
 const CollapseWrapper = styled.div`
-  width: 45%;
+  width: ${(props) => props.width};
   border-radius: 5px;
   background-color: ${colors.secondary};
-  @media only screen and (max-width : 500px) {
+  margin-bottom: 25px;
+  @media only screen and (max-width: 500px) {
     width: 100%;
     margin-bottom: 15px;
   }
 `;
 
 const CollapseWrapperNotActive = styled.div`
-  width: 45%;
+  width: ${(props) => props.width};
   background-color: none;
-  @media only screen and (max-width : 500px) {
+  margin-bottom: 25px;
+  @media only screen and (max-width: 500px) {
     width: 100%;
     margin-bottom: 15px;
   }
@@ -34,21 +36,10 @@ const CollapseSwitch = styled.div`
 
 const CollapseTitle = styled.p`
   color: ${colors.white};
-  font-size: 18px;
+  font-size: ${(props) => props.titleSize};
   font-weight: normal;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     font-size: 13px;
-  }
-`;
-
-const CollapseDesc = styled.p`
-  color: ${colors.primary};
-  padding: 20px;
-  font-size: 18px;
-  font-weight: 400;
-  @media only screen and (max-width : 500px) {
-    font-size: 12px;
-    padding: 10px;
   }
 `;
 
@@ -66,28 +57,28 @@ const ButtonArrowActive = styled.button`
 `;
 
 const Arrow = styled.img`
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     height: 10px;
   }
-`
+`;
 
-function DescriptionCollapse({ title, content }) {
+function DescriptionCollapse({ title, width, titleSize, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return isOpen ? (
-    <CollapseWrapper>
+    <CollapseWrapper width={width}>
       <CollapseSwitch>
-        <CollapseTitle>{title}</CollapseTitle>
+        <CollapseTitle titleSize={titleSize}>{title}</CollapseTitle>
         <ButtonArrowActive onClick={() => setIsOpen(false)}>
           <Arrow src={arrow} alt="bouton flèche" />
         </ButtonArrowActive>
       </CollapseSwitch>
-      <CollapseDesc>{content}</CollapseDesc>
+      {children}
     </CollapseWrapper>
   ) : (
-    <CollapseWrapperNotActive>
+    <CollapseWrapperNotActive width={width}>
       <CollapseSwitch>
-        <CollapseTitle>{title}</CollapseTitle>
+        <CollapseTitle titleSize={titleSize}>{title}</CollapseTitle>
         <ButtonArrow onClick={() => setIsOpen(true)}>
           <Arrow src={arrow} alt="bouton flèche" />
         </ButtonArrow>

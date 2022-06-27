@@ -6,8 +6,8 @@ import colors from "../../utils/style/colors";
 import Slider from "../../components/Slider";
 import Tag from "../../components/Tag";
 import DescriptionCollapse from "../../components/DescriptionCollapse";
-import StuffCollapse from "../../components/StuffCollapse";
 import Rating from "../../components/Rating";
+import Error from "../../components/Error";
 
 const MainInfosWrapper = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const MainInfosWrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   color: ${colors.primary};
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     flex-direction: column;
   }
 `;
@@ -23,18 +23,17 @@ const MainInfosWrapper = styled.div`
 const LogementWrapper = styled.div`
   width: 80%;
   margin: auto;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     width: 90%;
   }
 `;
 
-const TitleWrapper = styled.div`
-`;
+const TitleWrapper = styled.div``;
 
 const TitleStyle = styled.h1`
   font-weight: 500;
   font-size: 36px;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     font-size: 18px;
   }
 `;
@@ -42,7 +41,7 @@ const TitleStyle = styled.h1`
 const SubTitleStyle = styled.h2`
   font-weight: 500;
   font-size: 18px;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     font-size: 14px;
   }
 `;
@@ -58,7 +57,7 @@ const HostName = styled.p`
   font-weight: 500;
   font-size: 18px;
   text-align: right;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     font-size: 12px;
     width: 80px;
   }
@@ -68,7 +67,7 @@ const HostPhoto = styled.img`
   margin-left: 10px;
   height: 64px;
   border-radius: 10rem;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     height: 32px;
   }
 `;
@@ -84,15 +83,41 @@ const CollapseWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 0 50px 0;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     flex-direction: column;
   }
+`;
+
+const CollapseDesc = styled.p`
+  color: ${colors.primary};
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  @media only screen and (max-width: 500px) {
+    font-size: 12px;
+    padding: 10px;
+  }
+`;
+
+const StuffUl = styled.div`
+  color: ${colors.primary};
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  @media only screen and (max-width: 500px) {
+    font-size: 12px;
+    padding: 10px;
+  }
+`;
+
+const StuffList = styled.li`
+  list-style: none;
 `;
 
 const HostAndRate = styled.div`
   display: flex;
   flex-direction: column;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
@@ -103,7 +128,7 @@ const HostAndRate = styled.div`
 
 const RatingWrapper = styled.div`
   position: relative;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     width: 100%;
     height: 18px;
   }
@@ -152,7 +177,7 @@ function Logement() {
 
   return isDataLoading ? (
     <Loader />
-  ) : (
+  ) : logementDetails ? (
     <LogementWrapper>
       <Slider props={logementDetails.pictures} />
       <MainInfosWrapper>
@@ -186,14 +211,26 @@ function Logement() {
       <CollapseWrapper>
         <DescriptionCollapse
           title={"Description"}
-          content={logementDetails.description}
-        />
-        <StuffCollapse
+          width={"45%"}
+          titleSize={"18px"}
+        >
+          <CollapseDesc>{logementDetails.description}</CollapseDesc>
+        </DescriptionCollapse>
+        <DescriptionCollapse
           title={"Équipements"}
-          contents={logementDetails.equipments}
-        />
+          width={"45%"}
+          titleSize={"18px"}
+        >
+          <StuffUl>
+            {logementDetails.equipments.map((equipment, index) => (
+              <StuffList key={index}>{equipment}</StuffList>
+            ))}
+          </StuffUl>
+        </DescriptionCollapse>
       </CollapseWrapper>
     </LogementWrapper>
+  ) : (
+    <Error />
   );
 }
 

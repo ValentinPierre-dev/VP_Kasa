@@ -4,6 +4,7 @@ import { StyledLink } from "../../utils/style/Atoms";
 
 const ErrorWrapper = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   color: ${colors.primary};
   background-color: ${colors.background};
@@ -13,14 +14,25 @@ const ErrorWrapper = styled.div`
 const ErrorTitle = styled.h1`
   font-weight: bold;
   font-size: 12rem;
+  margin-top: 100px;
+  @media only screen and (max-width: 500px) {
+    font-size: 96px;
+  }
 `;
 
 const ErrorSubtitle = styled.h2`
   font-weight: semi-bold;
   margin-bottom: 6rem;
+  text-align: center;
+  @media only screen and (max-width: 500px) {
+    font-size: 18px;
+  }
 `;
 const ErrorLink = styled.div`
   margin-bottom: 6rem;
+  @media only screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 function Error() {

@@ -4,10 +4,10 @@ import Greystar from "../../assets/greystar.svg";
 
 const Stars = styled.img`
   height: 30px;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     height: 15px;
   }
-`
+`;
 
 function Rating({ scaleValue, ratingType }) {
   const range = [1, 2, 3, 4, 5];

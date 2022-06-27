@@ -10,7 +10,7 @@ const ThumbCover = styled.img`
   border-radius: 10px;
   width: 400px;
   height: 400px;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     width: 100%;
     height: 225px;
   }
@@ -28,13 +28,13 @@ const ThumbFilter = styled.div`
 
 const ThumbTitle = styled.span`
   position: absolute;
-  top: 330px;
+  bottom: 30px;
   left: 20px;
   color: ${colors.white};
   font-size: 18px;
   font-weight: normal;
-  @media only screen and (max-width : 500px) {
-    top: 180px;
+  @media only screen and (max-width: 500px) {
+    bottom: 18px;
   }
 `;
 
@@ -49,7 +49,7 @@ const ThumbWrapper = styled.div`
     cursor: pointer;
     box-shadow: 2px 2px 10px #e2e3e9;
   }
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     width: 100%;
     height: 225px;
   }

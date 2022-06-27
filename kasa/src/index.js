@@ -10,12 +10,19 @@ import Footer from "./components/Footer";
 import Error from "./components/Error";
 
 const GlobalStyle = createGlobalStyle`
+
     * {
       font-family: 'Montserrat', Helvetica, sans-serif;
     }
     body {
       width: 100%;
+      min-height: 100vh;
       margin: auto;
+    }
+    #root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     h1 {
       margin: 0;

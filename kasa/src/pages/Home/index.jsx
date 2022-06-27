@@ -10,7 +10,7 @@ import { Loader } from "../../utils/style/Atoms";
 const HomeWrapper = styled.div`
   width: 80%;
   margin: 20px auto;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     width: 90%;
     margin: 0px auto;
   }
@@ -20,7 +20,7 @@ const HomeBanner = styled.div`
   position: relative;
   text-align: center;
   color: white;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     text-align: left;
   }
 `;
@@ -30,7 +30,7 @@ const HomeBannerImg = styled.img`
   border-radius: 25px;
   filter: brightness(80%);
   object-fit: cover;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     height: 111px;
     border-radius: 10px;
   }
@@ -42,7 +42,7 @@ const HomeBannerTitle = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2.5rem;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     font-size: 1.5rem;
     left: 38%;
   }
@@ -57,7 +57,7 @@ const ThumbList = styled.div`
   padding: 56px;
   border-radius: 25px;
   background-color: ${colors.secondary};
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 15px;

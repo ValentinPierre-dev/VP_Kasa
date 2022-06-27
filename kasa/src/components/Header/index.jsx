@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png";
 
 const HomeLogo = styled.img`
   height: 50px;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     height: 40px;
   }
 `;
@@ -17,7 +17,7 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media only screen and (max-width : 500px) {
+  @media only screen and (max-width: 500px) {
     width: 90%;
     padding: 15px 0px;
   }
